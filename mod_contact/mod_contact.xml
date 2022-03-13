@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>mod_contact</name>
+	<author>Per Nielsen</author>
+	<creationDate>oktober 2021</creationDate>
+	<authorEmail>support@amigal.dk</authorEmail>
+	<version>1.0.0</version>
+	<description>MOD_CONTACT_XML_DESCRIPTION</description>
+
+	<namespace path="src">Joomla\Module\Contact</namespace>
+
+	<files>
+		<filename module="mod_contact">mod_contact.php</filename>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+		<folder>src</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/mod_contact.ini</language>
+		<language tag="en-GB">language/en-GB/mod_contact.sys.ini</language>
+		<language tag="da-DK">language/da-DK/mod_contact.ini</language>
+		<language tag="da-DK">language/da-DK/mod_contact.sys.ini</language>
+	</languages>
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ƒ" />
+	<config>
+		<fields name="params">
+		    <fieldset name="basic" label="JGLOBAL_CATEGORIES_OPTIONS"  addfieldpath="/modules/mod_contact/src/models/fields/" addfieldprefix="Joomla\Component\Menus\Administrator\Field">
+			    <field
+					name="catids"
+					type="category"
+					label="JCATEGORY"
+					extension="com_contact"
+					multiple="true"
+					layout="joomla.form.field.list-fancy-select"
+					filter="intarray"
+					class="multipleCategories"
+				/>
+				
+				<field
+				    name="contactfields"
+				    type="contact.contactfields"
+				    label="MOD_CONTACT_CONTACT_FIELDS_LABEL"
+				    description="MOD_CONTACT_CONTACT_FIELDS_DESCRIPTION"
+				    layout="joomla.form.field.list-fancy-select"
+				    multiple = "true"
+				/>
+				
+				<field
+					name="base"
+					type="modal_menu"
+					label="MOD_CONTACT_FIELD_ACTIVE_LABEL"
+					select="true"
+					new="true"
+					edit="true"
+					clear="true"
+					filter="integer"
+					>
+					<option value="">JCURRENT</option>
+				</field>
+
+				
+    		</fieldset>
+		
+		
+    		<fieldset name="category" label="JGLOBAL_CATEGORY_OPTIONS" description="JGLOBAL_SUBSLIDER_DRILL_CATEGORIES_LABEL">
+    			<field
+	    			name="show_category_title"
+		    		type="list"
+			    	label="JGLOBAL_SHOW_CATEGORY_TITLE"
+    				useglobal="true"
+    				class="form-select-color-state"
+	    			validate="options"
+		    		>
+				    <option value="0">JHIDE</option>
+				    <option value="1">JSHOW</option>
+			    </field>
+
+			    <field
+				    name="show_description"
+    				type="list"
+    				label="JGLOBAL_SHOW_CATEGORY_DESCRIPTION_LABEL"
+    				useglobal="true"
+    				class="form-select-color-state"
+    				validate="options"
+    				>
+    				<option value="0">JHIDE</option>
+    				<option value="1">JSHOW</option>
+	    		</field>
+
+    			<field
+    				name="show_description_image"
+    				type="list"
+    				label="JGLOBAL_SHOW_CATEGORY_IMAGE_LABEL"
+    				useglobal="true"
+    				class="form-select-color-state"
+    				validate="options"
+    				>
+	    			<option value="0">JHIDE</option>
+	    			<option value="1">JSHOW</option>
+	    		</field>
+			
+    			<field    					
+    			    name="filter_tag"
+					type="tag"
+					label="JTAG"
+					mode="nested"
+					multiple="true"
+					filter="intarray"
+					class="multipleTags"
+				/>
+	        </fieldset>
+			
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"
+					validate="moduleLayout"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					rows="3"
+					validate="CssIdentifier"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="1"
+					filter="integer"
+					validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					default="900"
+					filter="integer"
+				/>
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static"
+					>
+					<option value="static"></option>
+				</field>
+			</fieldset>
+
+		
+		</fields>
+	</config>
+
+</extension>
